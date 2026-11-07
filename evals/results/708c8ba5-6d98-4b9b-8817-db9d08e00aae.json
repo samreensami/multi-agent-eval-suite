@@ -1,0 +1,63 @@
+{
+  "run_id": "708c8ba5-6d98-4b9b-8817-db9d08e00aae",
+  "run_timestamp": "2026-11-07T14:35:46.478515+05:00",
+  "benchmark_version": "1.0.0",
+  "run_type": "uploaded_file",
+  "uploaded_filename": "Financial-Reconciliation-Ledger-28a223cfcf08.pdf",
+  "total_tasks": 1,
+  "passed": 0,
+  "partial": 1,
+  "failed": 0,
+  "dlq_count": 0,
+  "aggregate_metrics": {
+    "task_accuracy": null,
+    "avg_f1": null,
+    "hallucination_rate": null,
+    "p95_latency_ms": 15,
+    "avg_cost_usd": 0.0,
+    "idempotency_pass_rate": 1.0,
+    "average_confidence": 0.98
+  },
+  "fte_equivalence_score": null,
+  "per_task_results": [
+    {
+      "task_id": "TASK-ETL-20261107143546439496",
+      "domain": "extraction",
+      "status": "partial",
+      "agent_used": "DataExtractionAgent",
+      "idempotency_key": "985a8535f13c9de1c90d8fd9e5b0df0fdb5a1a1d46bab5caa1dbb7a0edea8ced",
+      "result": {
+        "extracted_data": {
+          "currency": "USD"
+        },
+        "confidence_scores": {
+          "currency": 0.98
+        },
+        "low_confidence_fields": [],
+        "source_citation": "Uploaded file: Financial-Reconciliation-Ledger-28a223cfcf08.pdf",
+        "extraction_method": "regex_exact",
+        "document_id": "d32c5056a65a79354617f592fc28fc340560794481c7aed7d76de452ff36aa34",
+        "overall_confidence": 0.98,
+        "is_valid": true,
+        "validation_errors": [],
+        "coercions_applied": [],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "latency_ms": 13
+      },
+      "eval_metrics": {
+        "accuracy_score": null,
+        "f1_score": null,
+        "hallucination_rate": null,
+        "p95_latency_ms": 15,
+        "confidence": 0.98,
+        "cost_usd": 0.0,
+        "token_cost_usd": 0.0,
+        "total_latency_ms": 15,
+        "reconciliation_recall": null
+      },
+      "uploaded_filename": "Financial-Reconciliation-Ledger-28a223cfcf08.pdf"
+    }
+  ],
+  "summary": "Uploaded document processed. Accuracy and F1 are not scored because no gold-standard output was provided."
+}

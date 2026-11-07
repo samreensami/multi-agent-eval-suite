@@ -1,0 +1,49 @@
+{
+  "run_id": "72bd7ce2-8a45-43f8-8aad-181da6b8ffe9",
+  "run_timestamp": "2026-11-05T18:19:52.025372+00:00",
+  "benchmark_version": "1.0.0",
+  "spec_version": "1.0.0",
+  "total_tasks": 3,
+  "passed": 0,
+  "failed": 0,
+  "dlq_count": 0,
+  "aggregate_metrics": {
+    "task_accuracy": null,
+    "avg_f1": null,
+    "hallucination_rate": null,
+    "p95_latency_ms": null,
+    "avg_cost_usd": null,
+    "idempotency_pass_rate": 1.0
+  },
+  "fte_equivalence_score": 0.0,
+  "per_task_results": [
+    {
+      "test_case_id": "TC-ETL-001",
+      "task_id": "TASK-ETL-001",
+      "domain": "extraction",
+      "status": "dry_run",
+      "message": "Dry run \u2014 task not executed",
+      "result": null,
+      "eval_metrics": {}
+    },
+    {
+      "test_case_id": "TC-FIN-001",
+      "task_id": "TASK-FIN-001",
+      "domain": "financial",
+      "status": "dry_run",
+      "message": "Dry run \u2014 task not executed",
+      "result": null,
+      "eval_metrics": {}
+    },
+    {
+      "test_case_id": "TC-RPT-001",
+      "task_id": "TASK-RPT-001",
+      "domain": "reporting",
+      "status": "dry_run",
+      "message": "Dry run \u2014 task not executed",
+      "result": null,
+      "eval_metrics": {}
+    }
+  ],
+  "summary": "Placeholder run. Implement agents to get real scores."
+}

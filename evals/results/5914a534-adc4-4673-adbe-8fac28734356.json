@@ -1,0 +1,546 @@
+{
+  "run_id": "5914a534-adc4-4673-adbe-8fac28734356",
+  "run_timestamp": "2026-11-06T12:56:01.516065+00:00",
+  "benchmark_version": "1.0.0",
+  "spec_version": "1.0.0",
+  "total_tasks": 3,
+  "passed": 2,
+  "partial": 1,
+  "failed": 0,
+  "dlq_count": 0,
+  "aggregate_metrics": {
+    "task_accuracy": 0.625,
+    "avg_f1": 0.6666666666666666,
+    "hallucination_rate": 0.0,
+    "p95_latency_ms": 14,
+    "avg_cost_usd": 0.0,
+    "reconciliation_recall": 1.0,
+    "idempotency_pass_rate": 1.0
+  },
+  "fte_equivalence_score": 0.8499533333333332,
+  "per_task_results": [
+    {
+      "test_case_id": "TC-ETL-001",
+      "task_id": "TASK-ETL-001",
+      "idempotency_key": "f41a5e4056af904fc10e504715c7d2f1c497b3578a72d3a3245d3a55a9d53cf2",
+      "status": "partial",
+      "agent_used": "DataExtractionAgent",
+      "result": {
+        "extracted_data": {},
+        "confidence_scores": {},
+        "low_confidence_fields": [],
+        "source_citation": "DataExtractionAgent v1.0.0 \u2014 source=data/sample_invoices/invoice_TC_ETL_001.pdf \u2014 doc_id=99c321c9e91a \u2014 type=pdf \u2014 ts=2026-11-06T12:01:20.106798+00:00",
+        "extraction_method": "llm_grounded",
+        "document_id": "99c321c9e91a0a4e1efa819de1d8bb4d9e1835c71307685686f9bcaa6e3abf9f",
+        "overall_confidence": 0.0,
+        "is_valid": false,
+        "validation_errors": [
+          {
+            "field": "invoice_number",
+            "error": "required_field_missing",
+            "value_found": null
+          },
+          {
+            "field": "invoice_date",
+            "error": "required_field_missing",
+            "value_found": null
+          },
+          {
+            "field": "vendor_name",
+            "error": "required_field_missing",
+            "value_found": null
+          },
+          {
+            "field": "total_amount",
+            "error": "required_field_missing",
+            "value_found": null
+          },
+          {
+            "field": "currency",
+            "error": "required_field_missing",
+            "value_found": null
+          }
+        ],
+        "coercions_applied": [],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "latency_ms": 12
+      },
+      "audit_trail": [
+        {
+          "step_id": "3b691cc5-3d2e-4fb4-aa3f-46dda79b7bc9",
+          "skill_used": "data_extraction",
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "latency_ms": 13,
+          "timestamp_utc": "2026-11-06T12:01:20.107483+00:00"
+        }
+      ],
+      "eval_metrics": {
+        "accuracy_score": 0.0,
+        "f1_score": 0.0,
+        "hallucination_rate": 0.0,
+        "p95_latency_ms": 13,
+        "confidence": 0.0,
+        "cost_usd": 0.0,
+        "token_cost_usd": 0.0,
+        "total_latency_ms": 13,
+        "reconciliation_recall": null,
+        "latency_ms": 13
+      },
+      "domain": "extraction"
+    },
+    {
+      "test_case_id": "TC-FIN-001",
+      "task_id": "TASK-FIN-001",
+      "idempotency_key": "d9bbce0f7d48f5dfb5483e43d3cb067ab0791b220bc3bb5f9c77665b343715b9",
+      "status": "success",
+      "agent_used": "FinancialReconAgent",
+      "result": {
+        "matched_pairs": [
+          {
+            "po_id": "PO-2026-001",
+            "invoice_id": "INV-ACM-00142",
+            "match_stage": "exact",
+            "confidence": 0.99,
+            "delta_amount": 0.0,
+            "delta_amount_pct": 0.0
+          },
+          {
+            "po_id": "PO-2026-002",
+            "invoice_id": "INV-BCG-00891",
+            "match_stage": "exact",
+            "confidence": 0.99,
+            "delta_amount": 0.0,
+            "delta_amount_pct": 0.0
+          },
+          {
+            "po_id": "PO-2026-003",
+            "invoice_id": "INV-TXL-00234",
+            "match_stage": "exact",
+            "confidence": 0.99,
+            "delta_amount": 0.0,
+            "delta_amount_pct": 0.0
+          },
+          {
+            "po_id": "PO-2026-004",
+            "invoice_id": "INV-DSP-00567",
+            "match_stage": "exact",
+            "confidence": 0.99,
+            "delta_amount": 0.0,
+            "delta_amount_pct": 0.0
+          },
+          {
+            "po_id": "PO-2026-005",
+            "invoice_id": "INV-ENT-01122",
+            "match_stage": "exact",
+            "confidence": 0.99,
+            "delta_amount": 4750.0,
+            "delta_amount_pct": 0.05
+          },
+          {
+            "po_id": "PO-2026-007",
+            "invoice_id": "INV-MKT-00782",
+            "match_stage": "exact",
+            "confidence": 0.99,
+            "delta_amount": 0.0,
+            "delta_amount_pct": 0.0
+          },
+          {
+            "po_id": "PO-2026-008",
+            "invoice_id": "INV-TRN-00114",
+            "match_stage": "exact",
+            "confidence": 0.99,
+            "delta_amount": 0.0,
+            "delta_amount_pct": 0.0
+          },
+          {
+            "po_id": "PO-2026-009",
+            "invoice_id": "INV-CLD-00881",
+            "match_stage": "exact",
+            "confidence": 0.99,
+            "delta_amount": 0.0,
+            "delta_amount_pct": 0.0
+          },
+          {
+            "po_id": "PO-2026-010",
+            "invoice_id": "INV-LGL-00256",
+            "match_stage": "exact",
+            "confidence": 0.99,
+            "delta_amount": 0.0,
+            "delta_amount_pct": 0.0
+          },
+          {
+            "po_id": "PO-2026-006",
+            "invoice_id": "INV-UKT-00399",
+            "match_stage": "vendor_amount",
+            "confidence": 0.95,
+            "delta_amount": 0.0,
+            "delta_amount_pct": 0.0
+          }
+        ],
+        "unmatched_pos": [],
+        "unmatched_invoices": [],
+        "discrepancies": [
+          {
+            "discrepancy_id": "b4710c75-9527-4395-ad05-9daeaed35caa",
+            "po_id": "PO-2026-005",
+            "invoice_id": "INV-ENT-01122",
+            "discrepancy_type": "amount_mismatch",
+            "severity": "high",
+            "po_value": 95000.0,
+            "invoice_value": 99750.0,
+            "delta": 4750.0,
+            "details": "Invoice amount exceeds PO by $4,750.00 (5.0%) -- above high threshold of 2%",
+            "recommended_action": "escalate"
+          }
+        ],
+        "reconciliation_summary": {
+          "fiscal_period": "2026-Q4",
+          "total_pos": 10,
+          "total_invoices": 10,
+          "matched_pairs_count": 10,
+          "match_rate_pct": 100.0,
+          "total_matched_value_usd": 261289.0,
+          "total_discrepancies": 1,
+          "critical_discrepancies": 1,
+          "net_exposure_usd": 4750.0,
+          "requires_human_review": true,
+          "human_review_items": [
+            "INV-ENT-01122"
+          ]
+        },
+        "requires_human_review": true,
+        "audit_trail": [
+          {
+            "entry_id": "f7d75d12-7205-436e-9f3c-e98707201c4f",
+            "timestamp_utc": "2026-11-06T12:01:20.147048+00:00",
+            "action": "po_invoice_matched",
+            "entity_type": "matched_pair",
+            "entity_id": "PO-2026-001:INV-ACM-00142",
+            "before_state": {},
+            "after_state": {
+              "po_id": "PO-2026-001",
+              "invoice_id": "INV-ACM-00142",
+              "match_stage": "exact",
+              "confidence": 0.99,
+              "delta_amount": 0.0,
+              "delta_amount_pct": 0.0
+            },
+            "reason": "Stage=exact confidence=0.99",
+            "automated": true,
+            "agent_signature": "ce7bab714346fc02"
+          },
+          {
+            "entry_id": "6d413164-fd86-4af8-870a-a1d2e23295b0",
+            "timestamp_utc": "2026-11-06T12:01:20.147048+00:00",
+            "action": "po_invoice_matched",
+            "entity_type": "matched_pair",
+            "entity_id": "PO-2026-002:INV-BCG-00891",
+            "before_state": {},
+            "after_state": {
+              "po_id": "PO-2026-002",
+              "invoice_id": "INV-BCG-00891",
+              "match_stage": "exact",
+              "confidence": 0.99,
+              "delta_amount": 0.0,
+              "delta_amount_pct": 0.0
+            },
+            "reason": "Stage=exact confidence=0.99",
+            "automated": true,
+            "agent_signature": "b78af58513767a48"
+          },
+          {
+            "entry_id": "afb7bc9b-b5bd-48f2-af4d-05f01942c3c6",
+            "timestamp_utc": "2026-11-06T12:01:20.147048+00:00",
+            "action": "po_invoice_matched",
+            "entity_type": "matched_pair",
+            "entity_id": "PO-2026-003:INV-TXL-00234",
+            "before_state": {},
+            "after_state": {
+              "po_id": "PO-2026-003",
+              "invoice_id": "INV-TXL-00234",
+              "match_stage": "exact",
+              "confidence": 0.99,
+              "delta_amount": 0.0,
+              "delta_amount_pct": 0.0
+            },
+            "reason": "Stage=exact confidence=0.99",
+            "automated": true,
+            "agent_signature": "d46ef086ac3a38d7"
+          },
+          {
+            "entry_id": "211c533f-e189-4d22-ace0-65343ddfdbbb",
+            "timestamp_utc": "2026-11-06T12:01:20.147048+00:00",
+            "action": "po_invoice_matched",
+            "entity_type": "matched_pair",
+            "entity_id": "PO-2026-004:INV-DSP-00567",
+            "before_state": {},
+            "after_state": {
+              "po_id": "PO-2026-004",
+              "invoice_id": "INV-DSP-00567",
+              "match_stage": "exact",
+              "confidence": 0.99,
+              "delta_amount": 0.0,
+              "delta_amount_pct": 0.0
+            },
+            "reason": "Stage=exact confidence=0.99",
+            "automated": true,
+            "agent_signature": "c68c7a3d25993137"
+          },
+          {
+            "entry_id": "651d7cea-644a-4a06-96a4-d3e2d004a364",
+            "timestamp_utc": "2026-11-06T12:01:20.147048+00:00",
+            "action": "po_invoice_matched",
+            "entity_type": "matched_pair",
+            "entity_id": "PO-2026-005:INV-ENT-01122",
+            "before_state": {},
+            "after_state": {
+              "po_id": "PO-2026-005",
+              "invoice_id": "INV-ENT-01122",
+              "match_stage": "exact",
+              "confidence": 0.99,
+              "delta_amount": 4750.0,
+              "delta_amount_pct": 0.05
+            },
+            "reason": "Stage=exact confidence=0.99",
+            "automated": true,
+            "agent_signature": "2d39dd08c4a89f70"
+          },
+          {
+            "entry_id": "8c3a5eff-3b76-469f-8a3f-15d4d9d029a9",
+            "timestamp_utc": "2026-11-06T12:01:20.147048+00:00",
+            "action": "po_invoice_matched",
+            "entity_type": "matched_pair",
+            "entity_id": "PO-2026-007:INV-MKT-00782",
+            "before_state": {},
+            "after_state": {
+              "po_id": "PO-2026-007",
+              "invoice_id": "INV-MKT-00782",
+              "match_stage": "exact",
+              "confidence": 0.99,
+              "delta_amount": 0.0,
+              "delta_amount_pct": 0.0
+            },
+            "reason": "Stage=exact confidence=0.99",
+            "automated": true,
+            "agent_signature": "29b0c40cf4a1cd60"
+          },
+          {
+            "entry_id": "ef10b417-95fc-4105-ab4f-e70ae23a94f2",
+            "timestamp_utc": "2026-11-06T12:01:20.147048+00:00",
+            "action": "po_invoice_matched",
+            "entity_type": "matched_pair",
+            "entity_id": "PO-2026-008:INV-TRN-00114",
+            "before_state": {},
+            "after_state": {
+              "po_id": "PO-2026-008",
+              "invoice_id": "INV-TRN-00114",
+              "match_stage": "exact",
+              "confidence": 0.99,
+              "delta_amount": 0.0,
+              "delta_amount_pct": 0.0
+            },
+            "reason": "Stage=exact confidence=0.99",
+            "automated": true,
+            "agent_signature": "77e2f58b531e1517"
+          },
+          {
+            "entry_id": "568883e1-7513-40ce-b27d-389f70184a5d",
+            "timestamp_utc": "2026-11-06T12:01:20.147048+00:00",
+            "action": "po_invoice_matched",
+            "entity_type": "matched_pair",
+            "entity_id": "PO-2026-009:INV-CLD-00881",
+            "before_state": {},
+            "after_state": {
+              "po_id": "PO-2026-009",
+              "invoice_id": "INV-CLD-00881",
+              "match_stage": "exact",
+              "confidence": 0.99,
+              "delta_amount": 0.0,
+              "delta_amount_pct": 0.0
+            },
+            "reason": "Stage=exact confidence=0.99",
+            "automated": true,
+            "agent_signature": "b69d58d1415d3d34"
+          },
+          {
+            "entry_id": "37b38947-ae19-4e4a-877b-b0fe9488b958",
+            "timestamp_utc": "2026-11-06T12:01:20.147048+00:00",
+            "action": "po_invoice_matched",
+            "entity_type": "matched_pair",
+            "entity_id": "PO-2026-010:INV-LGL-00256",
+            "before_state": {},
+            "after_state": {
+              "po_id": "PO-2026-010",
+              "invoice_id": "INV-LGL-00256",
+              "match_stage": "exact",
+              "confidence": 0.99,
+              "delta_amount": 0.0,
+              "delta_amount_pct": 0.0
+            },
+            "reason": "Stage=exact confidence=0.99",
+            "automated": true,
+            "agent_signature": "f239807634f2df74"
+          },
+          {
+            "entry_id": "3f53deab-0126-42d2-a203-aff504b73704",
+            "timestamp_utc": "2026-11-06T12:01:20.147048+00:00",
+            "action": "po_invoice_matched",
+            "entity_type": "matched_pair",
+            "entity_id": "PO-2026-006:INV-UKT-00399",
+            "before_state": {},
+            "after_state": {
+              "po_id": "PO-2026-006",
+              "invoice_id": "INV-UKT-00399",
+              "match_stage": "vendor_amount",
+              "confidence": 0.95,
+              "delta_amount": 0.0,
+              "delta_amount_pct": 0.0
+            },
+            "reason": "Stage=vendor_amount confidence=0.95",
+            "automated": true,
+            "agent_signature": "b887995b4c7cfb17"
+          },
+          {
+            "entry_id": "d73f4b6e-57e1-4457-aa39-0e9b784468c3",
+            "timestamp_utc": "2026-11-06T12:01:20.147048+00:00",
+            "action": "discrepancy_flagged",
+            "entity_type": "discrepancy",
+            "entity_id": "b4710c75-9527-4395-ad05-9daeaed35caa",
+            "before_state": {},
+            "after_state": {
+              "discrepancy_id": "b4710c75-9527-4395-ad05-9daeaed35caa",
+              "po_id": "PO-2026-005",
+              "invoice_id": "INV-ENT-01122",
+              "discrepancy_type": "amount_mismatch",
+              "severity": "high",
+              "po_value": 95000.0,
+              "invoice_value": 99750.0,
+              "delta": 4750.0,
+              "details": "Invoice amount exceeds PO by $4,750.00 (5.0%) -- above high threshold of 2%",
+              "recommended_action": "escalate"
+            },
+            "reason": "Invoice amount exceeds PO by $4,750.00 (5.0%) -- above high threshold of 2%",
+            "automated": true,
+            "agent_signature": "50e8ceea26be79d4"
+          }
+        ],
+        "audit_hash": "c30ac3eb4d95b70295df46e2d3fdd9422fc1149c25fbd6742cd59860c209f9b9",
+        "duplicate_groups": [
+          {
+            "primary_invoice_id": "INV-BCG-00891",
+            "duplicate_invoice_ids": [
+              "INV-BCG-00891-DUP1",
+              "INV-BCG-00891-DUP2"
+            ],
+            "detection_method": "exact_match",
+            "confidence": 1.0
+          }
+        ],
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "latency_ms": 13
+      },
+      "audit_trail": [
+        {
+          "step_id": "7137dbb8-1218-473d-9948-6068cbb13b9b",
+          "skill_used": "financial_reconciliation",
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "latency_ms": 14,
+          "timestamp_utc": "2026-11-06T12:01:20.151092+00:00"
+        }
+      ],
+      "eval_metrics": {
+        "accuracy_score": 1.0,
+        "f1_score": 1.0,
+        "hallucination_rate": 0.0,
+        "p95_latency_ms": 14,
+        "confidence": 0.986,
+        "cost_usd": 0.0,
+        "token_cost_usd": 0.0,
+        "total_latency_ms": 14,
+        "reconciliation_recall": 1.0,
+        "latency_ms": 14
+      },
+      "domain": "financial"
+    },
+    {
+      "test_case_id": "TC-RPT-001",
+      "task_id": "TASK-RPT-001",
+      "idempotency_key": "872096c4ce40d8bee1267362d55a14a3738c7d516be781d968fdfa33c0e1c70b",
+      "status": "success",
+      "agent_used": "ReportGenAgent",
+      "result": {
+        "report_content": "# Q4 2026 Accounts Payable Reconciliation \u00e2\u20ac\u201d Executive Summary\n\n**Classification**: CONFIDENTIAL  \n**Date**: 2026-11-05  \n**Generated By**: ReportGenAgent v1.0.0  \n\n---\n\n## Table of Contents\n\n1. [Executive Highlights](#executive_highlights)\n2. [Reconciliation Overview](#reconciliation_overview)\n3. [Discrepancy Summary](#discrepancy_summary)\n4. [Action Items](#action_items)\n\n---\n\n## Executive Highlights\n\nThe Accounts Payable reconciliation for **current period** has been completed. Of **N/A** purchase orders processed, **N/A** were successfully matched to corresponding invoices, achieving a match rate of **N/A%**.\n\n**0** discrepancies were identified, with a net financial exposure of **$0.00 USD**. Immediate review is recommended for all critical-severity items.\n\n## Reconciliation Overview\n\n| Metric | Value |\n|--------|-------|\n| Total Purchase Orders | N/A |\n| Total Invoices | N/A |\n| Matched Pairs | N/A |\n| Match Rate | N/A% |\n| Total Matched Value | $0.00 |\n| Discrepancies Found | 0 |\n| Net Exposure | $0.00 |\n\n\n## Discrepancy Summary\n\nA total of **0** discrepancies were identified during reconciliation, of which **0** are classified as critical or high severity.\n\n**Net Financial Exposure**: $0.00 USD\n\n**Human Review Required**: No\n\n**Items Requiring Review**: None\n\n> All discrepancies have been recorded in the audit trail with unique discrepancy IDs and recommended actions.\n\n## Action Items\n\nThe following items require immediate action:\n\n- No critical action items at this time.\n\n> Deadline for resolution: within 24 hours per AP Policy v2.3 \u00a74.2\n\n\n## References\n\n[1] FinancialReconAgent \u00e2\u20ac\u201d Run TC-FIN-001 \u00e2\u20ac\u201d 2026-11-05T14:00:00Z\n[2] AP Policy Document v2.3 \u00e2\u20ac\u201d Finance Department \u00e2\u20ac\u201d October 2026\n",
+        "citations": [
+          {
+            "citation_id": "[1]",
+            "source_id": "recon_output_q4",
+            "citation_text": "FinancialReconAgent \u00e2\u20ac\u201d Run TC-FIN-001 \u00e2\u20ac\u201d 2026-11-05T14:00:00Z",
+            "url": ""
+          },
+          {
+            "citation_id": "[2]",
+            "source_id": "policy_ref_v2",
+            "citation_text": "AP Policy Document v2.3 \u00e2\u20ac\u201d Finance Department \u00e2\u20ac\u201d October 2026",
+            "url": ""
+          }
+        ],
+        "word_count": 240,
+        "sections_generated": [
+          "executive_highlights",
+          "reconciliation_overview",
+          "discrepancy_summary",
+          "action_items"
+        ],
+        "visualization_artifacts": [],
+        "generation_metadata": {
+          "model": "rule-based-template-v1.0",
+          "tokens_used": 0,
+          "generation_time_ms": 11,
+          "agent_version": "1.0.0"
+        },
+        "hallucination_report": {
+          "overall_hallucination_rate": 0.0,
+          "flagged_claims": [],
+          "clean_sections": [
+            "executive_highlights",
+            "reconciliation_overview",
+            "discrepancy_summary",
+            "action_items"
+          ],
+          "requires_human_review": false
+        },
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "latency_ms": 11
+      },
+      "audit_trail": [
+        {
+          "step_id": "2252598b-2a9c-4f03-934b-f752b8976cc1",
+          "skill_used": "report_generation",
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "latency_ms": 11,
+          "timestamp_utc": "2026-11-06T12:01:20.196360+00:00"
+        }
+      ],
+      "eval_metrics": {
+        "accuracy_score": 0.875,
+        "f1_score": 1.0,
+        "hallucination_rate": 0.0,
+        "p95_latency_ms": 11,
+        "confidence": 0.97,
+        "cost_usd": 0.0,
+        "token_cost_usd": 0.0,
+        "total_latency_ms": 11,
+        "reconciliation_recall": null,
+        "latency_ms": 11
+      },
+      "domain": "reporting"
+    }
+  ],
+  "summary": "Completed 3 task(s): 2 succeeded, 1 partial, 0 failed, 0 routed to DLQ."
+}

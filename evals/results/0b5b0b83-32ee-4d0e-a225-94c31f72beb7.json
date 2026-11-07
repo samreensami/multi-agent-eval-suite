@@ -1,0 +1,70 @@
+{
+  "run_id": "0b5b0b83-32ee-4d0e-a225-94c31f72beb7",
+  "run_timestamp": "2026-11-06T11:48:33.781652+00:00",
+  "benchmark_version": "1.0.0",
+  "spec_version": "1.0.0",
+  "total_tasks": 3,
+  "passed": 0,
+  "failed": 0,
+  "dlq_count": 0,
+  "aggregate_metrics": {
+    "task_accuracy": null,
+    "avg_f1": null,
+    "hallucination_rate": null,
+    "p95_latency_ms": null,
+    "avg_cost_usd": null,
+    "idempotency_pass_rate": 1.0
+  },
+  "fte_equivalence_score": 0.0,
+  "per_task_results": [
+    {
+      "test_case_id": "TC-ETL-001",
+      "task_id": "TASK-ETL-001",
+      "domain": "extraction",
+      "idempotency_key": "56d94a05edba95883ebd79ae146f564638b91a61b515c2dae7c89db9f2e605f8",
+      "status": "placeholder",
+      "message": "Agent implementation pending. Implement agents/orchestrator.py.",
+      "result": null,
+      "eval_metrics": {
+        "accuracy_score": null,
+        "f1_score": null,
+        "hallucination_rate": null,
+        "latency_ms": null,
+        "cost_usd": null
+      }
+    },
+    {
+      "test_case_id": "TC-FIN-001",
+      "task_id": "TASK-FIN-001",
+      "domain": "financial",
+      "idempotency_key": "5e1b3716ec738d056bb561d5b251f21a8ec33a4a32ce9807f4151439862ec7f8",
+      "status": "placeholder",
+      "message": "Agent implementation pending. Implement agents/orchestrator.py.",
+      "result": null,
+      "eval_metrics": {
+        "accuracy_score": null,
+        "f1_score": null,
+        "hallucination_rate": null,
+        "latency_ms": null,
+        "cost_usd": null
+      }
+    },
+    {
+      "test_case_id": "TC-RPT-001",
+      "task_id": "TASK-RPT-001",
+      "domain": "reporting",
+      "idempotency_key": "42d908df26cf93bf5be8ab254395e3a643841cbb59f6ca79529ec1b12b160ee0",
+      "status": "placeholder",
+      "message": "Agent implementation pending. Implement agents/orchestrator.py.",
+      "result": null,
+      "eval_metrics": {
+        "accuracy_score": null,
+        "f1_score": null,
+        "hallucination_rate": null,
+        "latency_ms": null,
+        "cost_usd": null
+      }
+    }
+  ],
+  "summary": "Placeholder run. Implement agents to get real scores."
+}

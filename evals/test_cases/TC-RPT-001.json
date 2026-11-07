@@ -1,0 +1,104 @@
+{
+  "test_case_id": "TC-RPT-001",
+  "task_id": "TASK-RPT-001",
+  "description": "Generate an executive summary report from Q4-2026 reconciliation data. Must be ≤ 800 words, cite all data sources, hallucination rate ≤ 0.03, and include KPI callouts for match_rate, net_exposure, and discrepancy_count.",
+  "domain": "reporting",
+  "version": "1.0.0",
+  "input": {
+    "report_type": "executive_summary",
+    "data_sources": [
+      {
+        "source_id": "recon_output_q4",
+        "source_type": "agent_output",
+        "source_citation": "FinancialReconAgent — Run TC-FIN-001 — 2026-11-05T14:00:00Z",
+        "confidence": 0.99,
+        "data": {
+          "fiscal_period": "2026-Q4",
+          "total_pos": 10,
+          "total_invoices": 12,
+          "matched_pairs_count": 10,
+          "match_rate_pct": 100.0,
+          "total_matched_value_usd": 258720.50,
+          "total_discrepancies": 1,
+          "net_exposure_usd": 4750.00,
+          "requires_human_review": true,
+          "critical_discrepancies": 1,
+          "duplicate_invoices_found": 2,
+          "human_review_items": ["INV-ENT-01122"]
+        },
+        "timestamp_utc": "2026-11-05T14:00:00Z"
+      },
+      {
+        "source_id": "policy_ref_v2",
+        "source_type": "document",
+        "source_citation": "AP Policy Document v2.3 — Finance Department — October 2026",
+        "confidence": 1.0,
+        "data": {
+          "critical_discrepancy_threshold_pct": 5.0,
+          "escalation_sla_hours": 24,
+          "auto_approve_threshold_pct": 1.0
+        },
+        "timestamp_utc": "2026-10-01T00:00:00Z"
+      }
+    ],
+    "output_format": "markdown",
+    "tone": "executive",
+    "sections": [
+      "executive_highlights",
+      "reconciliation_overview",
+      "discrepancy_summary",
+      "action_items"
+    ],
+    "visualizations": [
+      {
+        "chart_id": "match_rate_gauge",
+        "chart_type": "metric_card",
+        "title": "Match Rate",
+        "data": { "value": 100.0, "unit": "%", "threshold": 95.0 }
+      },
+      {
+        "chart_id": "exposure_waterfall",
+        "chart_type": "waterfall",
+        "title": "Financial Exposure Breakdown",
+        "data": {
+          "labels": ["Total PO Value", "Matched Value", "Discrepancy Exposure", "Net Exposure"],
+          "values": [258720.50, 253970.50, 4750.00, 4750.00]
+        }
+      }
+    ],
+    "metadata": {
+      "report_title": "Q4 2026 Accounts Payable Reconciliation — Executive Summary",
+      "author": "ReportGenAgent v1.0.0",
+      "date": "2026-11-05",
+      "classification": "confidential",
+      "version": "1.0"
+    }
+  },
+  "gold_standard": {
+    "required_kpis_present": ["match_rate_pct", "net_exposure_usd", "total_discrepancies"],
+    "required_sections": ["executive_highlights", "reconciliation_overview", "discrepancy_summary", "action_items"],
+    "max_word_count": 800,
+    "min_citations": 2,
+    "hallucination_rate_max": 0.03,
+    "tone_check": {
+      "must_not_contain": ["I think", "maybe", "probably", "it seems"],
+      "must_contain_numbers": ["100%", "$4,750", "1 discrepancy"]
+    },
+    "required_citations": ["recon_output_q4", "policy_ref_v2"]
+  },
+  "evaluation_config": {
+    "metrics": ["accuracy", "hallucination_rate", "citation_completeness", "section_completeness", "latency_ms", "cost_usd"],
+    "thresholds": {
+      "hallucination_rate": 0.03,
+      "citation_completeness": 1.0,
+      "section_completeness": 1.0,
+      "word_count_max": 800,
+      "latency_ms": 20000,
+      "cost_usd": 0.10
+    },
+    "evaluation_method": "llm_judge",
+    "judge_model": "gemini-2.5-pro",
+    "judge_rubric": "evals/rubrics/executive_report_rubric.json"
+  },
+  "tags": ["smoke", "regression", "reporting", "executive_summary", "hallucination_check", "citation_check"]
+}

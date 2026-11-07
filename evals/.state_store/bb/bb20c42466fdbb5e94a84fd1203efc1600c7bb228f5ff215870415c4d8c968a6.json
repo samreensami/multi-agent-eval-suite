@@ -1,0 +1,57 @@
+{
+  "idempotency_key": "bb20c42466fdbb5e94a84fd1203efc1600c7bb228f5ff215870415c4d8c968a6",
+  "task_id": "TASK-ETL-20261107134852705718",
+  "status": "success",
+  "retry_count": 0,
+  "created_at": "2026-11-07T08:48:52.707865+00:00",
+  "updated_at": "2026-11-07T08:48:52.745121+00:00",
+  "result": {
+    "task_id": "TASK-ETL-20261107134852705718",
+    "idempotency_key": "bb20c42466fdbb5e94a84fd1203efc1600c7bb228f5ff215870415c4d8c968a6",
+    "status": "success",
+    "agent_used": "DataExtractionAgent",
+    "result": {
+      "extracted_data": {
+        "currency": "USD"
+      },
+      "confidence_scores": {
+        "currency": 0.98
+      },
+      "low_confidence_fields": [],
+      "source_citation": "DataExtractionAgent v1.0.0 \u2014 source=Financial Reconciliation Ledger\nMulti-Agent Automated Auditi \u2014 doc_id=d32c5056a65a \u2014 type=text \u2014 ts=2026-11-07T08:48:52.729145+00:00",
+      "extraction_method": "regex_exact",
+      "document_id": "d32c5056a65a79354617f592fc28fc340560794481c7aed7d76de452ff36aa34",
+      "overall_confidence": 0.98,
+      "is_valid": true,
+      "validation_errors": [],
+      "coercions_applied": [],
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "latency_ms": 16
+    },
+    "audit_trail": [
+      {
+        "step_id": "6c2e8533-9ee3-42c8-8d87-6a5a26aef653",
+        "skill_used": "data_extraction",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "latency_ms": 20,
+        "timestamp_utc": "2026-11-07T08:48:52.732530+00:00"
+      }
+    ],
+    "eval_metrics": {
+      "accuracy_score": 1.0,
+      "f1_score": 0.0,
+      "hallucination_rate": 0.0,
+      "p95_latency_ms": 20,
+      "confidence": 0.98,
+      "cost_usd": 0.0,
+      "token_cost_usd": 0.0,
+      "total_latency_ms": 20,
+      "reconciliation_recall": null
+    }
+  },
+  "failure_reason": null,
+  "failure_category": null,
+  "entry_hash": "ee06d4de693b0d2f11f325e5cba34dfc3a797e1d8636c78456defcc332aeab83"
+}

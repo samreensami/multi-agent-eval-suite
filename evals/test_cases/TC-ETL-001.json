@@ -1,0 +1,73 @@
+{
+  "test_case_id": "TC-ETL-001",
+  "task_id": "TASK-ETL-001",
+  "description": "Extract invoice fields from a well-formatted text-layer PDF. Expected high confidence (≥ 0.95) on all required fields.",
+  "domain": "extraction",
+  "version": "1.0.0",
+  "input": {
+    "source_type": "pdf",
+    "source_ref": "data/sample_invoices/invoice_TC_ETL_001.pdf",
+    "target_schema": {
+      "type": "object",
+      "properties": {
+        "invoice_number":  { "type": "string" },
+        "invoice_date":    { "type": "string", "format": "date" },
+        "vendor_name":     { "type": "string" },
+        "vendor_id":       { "type": "string" },
+        "total_amount":    { "type": "number" },
+        "currency":        { "type": "string", "pattern": "^[A-Z]{3}$" },
+        "line_items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "description": { "type": "string" },
+              "quantity":    { "type": "integer" },
+              "unit_price":  { "type": "number" },
+              "subtotal":    { "type": "number" }
+            },
+            "required": ["description", "quantity", "unit_price", "subtotal"]
+          }
+        }
+      },
+      "required": ["invoice_number", "invoice_date", "vendor_name", "total_amount", "currency"]
+    },
+    "extraction_hints": ["invoice_number", "total_amount", "vendor_name"],
+    "confidence_threshold": 0.85
+  },
+  "gold_standard": {
+    "extracted_data": {
+      "invoice_number": "INV-2026-Q4-00142",
+      "invoice_date": "2026-10-28",
+      "vendor_name": "Acme Software Solutions Inc.",
+      "vendor_id": "VEND-ACM-001",
+      "total_amount": 48750.00,
+      "currency": "USD",
+      "line_items": [
+        { "description": "Enterprise SaaS License — Annual", "quantity": 5, "unit_price": 9500.00, "subtotal": 47500.00 },
+        { "description": "Implementation Support Fee",         "quantity": 1, "unit_price": 1250.00, "subtotal": 1250.00 }
+      ]
+    },
+    "low_confidence_fields": [],
+    "is_valid": true
+  },
+  "evaluation_config": {
+    "metrics": ["accuracy", "f1", "latency_ms", "cost_usd"],
+    "thresholds": {
+      "accuracy": 0.95,
+      "f1": 0.92,
+      "latency_ms": 10000,
+      "cost_usd": 0.05,
+      "confidence_min": 0.85
+    },
+    "field_weights": {
+      "invoice_number": 1.5,
+      "total_amount": 2.0,
+      "vendor_name": 1.5,
+      "invoice_date": 1.0,
+      "currency": 1.0,
+      "line_items": 1.0
+    }
+  },
+  "tags": ["smoke", "regression", "extraction", "pdf", "high-confidence"]
+}

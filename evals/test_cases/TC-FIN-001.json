@@ -1,0 +1,105 @@
+{
+  "test_case_id": "TC-FIN-001",
+  "task_id": "TASK-FIN-001",
+  "description": "Reconcile 10 purchase orders against 12 invoices. Expect 9 exact matches, 1 fuzzy match, 2 unmatched invoices (duplicates), and 1 known amount discrepancy at high severity.",
+  "domain": "financial",
+  "version": "1.0.0",
+  "input": {
+    "purchase_orders": [
+      { "po_id": "PO-2026-001", "amount": 48750.00, "currency": "USD", "vendor_id": "VEND-ACM-001", "vendor_name": "Acme Software Solutions Inc.", "po_date": "2026-10-15", "line_items": [ { "description": "Enterprise SaaS License — Annual", "quantity": 5, "unit_price": 9500.00, "subtotal": 47500.00 }, { "description": "Implementation Support Fee", "quantity": 1, "unit_price": 1250.00, "subtotal": 1250.00 } ] },
+      { "po_id": "PO-2026-002", "amount": 12500.00, "currency": "USD", "vendor_id": "VEND-BCG-002", "vendor_name": "Blue Cloud Group LLC",         "po_date": "2026-10-18", "line_items": [ { "description": "Cloud Infrastructure - Q4", "quantity": 1, "unit_price": 12500.00, "subtotal": 12500.00 } ] },
+      { "po_id": "PO-2026-003", "amount": 7800.00,  "currency": "EUR", "vendor_id": "VEND-TXL-003", "vendor_name": "TechXcel GmbH",                "po_date": "2026-10-20", "line_items": [ { "description": "Security Audit Services",           "quantity": 3, "unit_price": 2600.00, "subtotal": 7800.00  } ] },
+      { "po_id": "PO-2026-004", "amount": 3200.00,  "currency": "USD", "vendor_id": "VEND-DSP-004", "vendor_name": "DataSpark Partners",           "po_date": "2026-10-22", "line_items": [ { "description": "Data Pipeline Consulting",          "quantity": 8, "unit_price": 400.00,  "subtotal": 3200.00  } ] },
+      { "po_id": "PO-2026-005", "amount": 95000.00, "currency": "USD", "vendor_id": "VEND-ENT-005", "vendor_name": "Enterprise Dynamics Corp",     "po_date": "2026-10-25", "line_items": [ { "description": "ERP System Module License",         "quantity": 1, "unit_price": 95000.00,"subtotal": 95000.00 } ] },
+      { "po_id": "PO-2026-006", "amount": 4500.00,  "currency": "GBP", "vendor_id": "VEND-UKT-006", "vendor_name": "UK TechServices Ltd",          "po_date": "2026-10-28", "line_items": [ { "description": "API Integration Work",              "quantity": 15, "unit_price": 300.00, "subtotal": 4500.00  } ] },
+      { "po_id": "PO-2026-007", "amount": 22000.00, "currency": "USD", "vendor_id": "VEND-MKT-007", "vendor_name": "MarketReach Analytics",        "po_date": "2026-10-30", "line_items": [ { "description": "Q4 Marketing Analytics Platform",    "quantity": 1, "unit_price": 22000.00,"subtotal": 22000.00 } ] },
+      { "po_id": "PO-2026-008", "amount": 1800.00,  "currency": "USD", "vendor_id": "VEND-TRN-008", "vendor_name": "Training Hub Inc.",            "po_date": "2026-11-01", "line_items": [ { "description": "Staff Training — 6 seats",           "quantity": 6, "unit_price": 300.00,  "subtotal": 1800.00  } ] },
+      { "po_id": "PO-2026-009", "amount": 55000.00, "currency": "USD", "vendor_id": "VEND-CLD-009", "vendor_name": "CloudBridge Solutions",        "po_date": "2026-11-02", "line_items": [ { "description": "Annual Support Contract",             "quantity": 1, "unit_price": 55000.00,"subtotal": 55000.00 } ] },
+      { "po_id": "PO-2026-010", "amount": 8900.00,  "currency": "USD", "vendor_id": "VEND-LGL-010", "vendor_name": "LegalEdge Consulting",         "po_date": "2026-11-03", "line_items": [ { "description": "Contract Review Services",           "quantity": 4, "unit_price": 2225.00, "subtotal": 8900.00  } ] }
+    ],
+    "invoices": [
+      { "invoice_id": "INV-ACM-00142", "amount": 48750.00, "currency": "USD", "vendor_id": "VEND-ACM-001", "vendor_name": "Acme Software Solutions Inc.", "invoice_date": "2026-10-28", "po_reference": "PO-2026-001" },
+      { "invoice_id": "INV-BCG-00891", "amount": 12500.00, "currency": "USD", "vendor_id": "VEND-BCG-002", "vendor_name": "Blue Cloud Group LLC",         "invoice_date": "2026-10-19", "po_reference": "PO-2026-002" },
+      { "invoice_id": "INV-TXL-00234", "amount": 7800.00,  "currency": "EUR", "vendor_id": "VEND-TXL-003", "vendor_name": "TechXcel GmbH",                "invoice_date": "2026-10-21", "po_reference": "PO-2026-003" },
+      { "invoice_id": "INV-DSP-00567", "amount": 3200.00,  "currency": "USD", "vendor_id": "VEND-DSP-004", "vendor_name": "DataSpark Partners",           "invoice_date": "2026-10-23", "po_reference": "PO-2026-004" },
+      { "invoice_id": "INV-ENT-01122", "amount": 99750.00, "currency": "USD", "vendor_id": "VEND-ENT-005", "vendor_name": "Enterprise Dynamics Corp",     "invoice_date": "2026-10-26", "po_reference": "PO-2026-005", "_note": "DISCREPANCY: amount 99750 vs PO 95000 (+5.0% — CRITICAL)" },
+      { "invoice_id": "INV-UKT-00399", "amount": 4500.00,  "currency": "GBP", "vendor_id": "VEND-UKT-006", "vendor_name": "UK TechServices Limited",     "invoice_date": "2026-10-29", "po_reference": "",            "_note": "FUZZY: vendor name slightly different, no PO ref" },
+      { "invoice_id": "INV-MKT-00782", "amount": 22000.00, "currency": "USD", "vendor_id": "VEND-MKT-007", "vendor_name": "MarketReach Analytics",        "invoice_date": "2026-10-31", "po_reference": "PO-2026-007" },
+      { "invoice_id": "INV-TRN-00114", "amount": 1800.00,  "currency": "USD", "vendor_id": "VEND-TRN-008", "vendor_name": "Training Hub Inc.",            "invoice_date": "2026-11-02", "po_reference": "PO-2026-008" },
+      { "invoice_id": "INV-CLD-00881", "amount": 55000.00, "currency": "USD", "vendor_id": "VEND-CLD-009", "vendor_name": "CloudBridge Solutions",        "invoice_date": "2026-11-03", "po_reference": "PO-2026-009" },
+      { "invoice_id": "INV-LGL-00256", "amount": 8900.00,  "currency": "USD", "vendor_id": "VEND-LGL-010", "vendor_name": "LegalEdge Consulting",         "invoice_date": "2026-11-04", "po_reference": "PO-2026-010" },
+      { "invoice_id": "INV-BCG-00891-DUP1", "amount": 12500.00, "currency": "USD", "vendor_id": "VEND-BCG-002", "vendor_name": "Blue Cloud Group LLC", "invoice_date": "2026-10-19", "po_reference": "PO-2026-002", "_note": "DUPLICATE of INV-BCG-00891" },
+      { "invoice_id": "INV-BCG-00891-DUP2", "amount": 12500.00, "currency": "USD", "vendor_id": "VEND-BCG-002", "vendor_name": "Blue Cloud Group LLC", "invoice_date": "2026-10-19", "po_reference": "PO-2026-002", "_note": "DUPLICATE of INV-BCG-00891" }
+    ],
+    "fiscal_period": "2026-Q4",
+    "base_currency": "USD",
+    "exchange_rates": { "EUR": 1.08, "GBP": 1.27 },
+    "matching_config": {
+      "fuzzy_threshold": 0.92,
+      "amount_tolerance_pct": 0.01,
+      "date_tolerance_days": 5,
+      "enable_llm_stage": true
+    }
+  },
+  "gold_standard": {
+    "matched_pairs": [
+      { "po_id": "PO-2026-001", "invoice_id": "INV-ACM-00142",  "match_stage": "exact",        "confidence": 0.99, "delta_amount": 0.00,    "delta_amount_pct": 0.000 },
+      { "po_id": "PO-2026-002", "invoice_id": "INV-BCG-00891",  "match_stage": "exact",        "confidence": 0.99, "delta_amount": 0.00,    "delta_amount_pct": 0.000 },
+      { "po_id": "PO-2026-003", "invoice_id": "INV-TXL-00234",  "match_stage": "exact",        "confidence": 0.99, "delta_amount": 0.00,    "delta_amount_pct": 0.000 },
+      { "po_id": "PO-2026-004", "invoice_id": "INV-DSP-00567",  "match_stage": "exact",        "confidence": 0.99, "delta_amount": 0.00,    "delta_amount_pct": 0.000 },
+      { "po_id": "PO-2026-005", "invoice_id": "INV-ENT-01122",  "match_stage": "exact",        "confidence": 0.99, "delta_amount": 4750.00, "delta_amount_pct": 0.050 },
+      { "po_id": "PO-2026-006", "invoice_id": "INV-UKT-00399",  "match_stage": "fuzzy",        "confidence": 0.94, "delta_amount": 0.00,    "delta_amount_pct": 0.000 },
+      { "po_id": "PO-2026-007", "invoice_id": "INV-MKT-00782",  "match_stage": "exact",        "confidence": 0.99, "delta_amount": 0.00,    "delta_amount_pct": 0.000 },
+      { "po_id": "PO-2026-008", "invoice_id": "INV-TRN-00114",  "match_stage": "exact",        "confidence": 0.99, "delta_amount": 0.00,    "delta_amount_pct": 0.000 },
+      { "po_id": "PO-2026-009", "invoice_id": "INV-CLD-00881",  "match_stage": "exact",        "confidence": 0.99, "delta_amount": 0.00,    "delta_amount_pct": 0.000 },
+      { "po_id": "PO-2026-010", "invoice_id": "INV-LGL-00256",  "match_stage": "exact",        "confidence": 0.99, "delta_amount": 0.00,    "delta_amount_pct": 0.000 }
+    ],
+    "unmatched_pos": [],
+    "unmatched_invoices": [],
+    "duplicate_groups": [
+      {
+        "primary_invoice_id": "INV-BCG-00891",
+        "duplicate_invoice_ids": ["INV-BCG-00891-DUP1", "INV-BCG-00891-DUP2"],
+        "detection_method": "exact_match",
+        "confidence": 1.0
+      }
+    ],
+    "discrepancies": [
+      {
+        "discrepancy_id": "DISC-001",
+        "po_id": "PO-2026-005",
+        "invoice_id": "INV-ENT-01122",
+        "discrepancy_type": "amount_mismatch",
+        "severity": "critical",
+        "po_value": 95000.00,
+        "invoice_value": 99750.00,
+        "delta": 4750.00,
+        "details": "Invoice amount exceeds PO by $4,750.00 (5.0%) — above critical threshold of 5%",
+        "recommended_action": "reject"
+      }
+    ],
+    "reconciliation_summary": {
+      "fiscal_period": "2026-Q4",
+      "total_pos": 10,
+      "total_invoices": 12,
+      "matched_pairs_count": 10,
+      "match_rate_pct": 100.0,
+      "total_matched_value_usd": 258720.50,
+      "total_discrepancies": 1,
+      "net_exposure_usd": 4750.00,
+      "requires_human_review": true,
+      "human_review_items": ["INV-ENT-01122"]
+    }
+  },
+  "evaluation_config": {
+    "metrics": ["accuracy", "f1", "reconciliation_recall", "latency_ms", "cost_usd"],
+    "thresholds": {
+      "reconciliation_recall": 0.95,
+      "duplicate_detection_accuracy": 1.0,
+      "discrepancy_detection_f1": 0.90,
+      "latency_ms": 15000,
+      "cost_usd": 0.10
+    }
+  },
+  "tags": ["smoke", "regression", "financial", "reconciliation", "discrepancy", "duplicate"]
+}

@@ -1,0 +1,79 @@
+{
+  "idempotency_key": "f41a5e4056af904fc10e504715c7d2f1c497b3578a72d3a3245d3a55a9d53cf2",
+  "task_id": "TASK-ETL-001",
+  "status": "success",
+  "retry_count": 0,
+  "created_at": "2026-11-06T12:01:20.089600+00:00",
+  "updated_at": "2026-11-06T12:01:20.122701+00:00",
+  "result": {
+    "task_id": "TASK-ETL-001",
+    "idempotency_key": "f41a5e4056af904fc10e504715c7d2f1c497b3578a72d3a3245d3a55a9d53cf2",
+    "status": "partial",
+    "agent_used": "DataExtractionAgent",
+    "result": {
+      "extracted_data": {},
+      "confidence_scores": {},
+      "low_confidence_fields": [],
+      "source_citation": "DataExtractionAgent v1.0.0 \u2014 source=data/sample_invoices/invoice_TC_ETL_001.pdf \u2014 doc_id=99c321c9e91a \u2014 type=pdf \u2014 ts=2026-11-06T12:01:20.106798+00:00",
+      "extraction_method": "llm_grounded",
+      "document_id": "99c321c9e91a0a4e1efa819de1d8bb4d9e1835c71307685686f9bcaa6e3abf9f",
+      "overall_confidence": 0.0,
+      "is_valid": false,
+      "validation_errors": [
+        {
+          "field": "invoice_number",
+          "error": "required_field_missing",
+          "value_found": null
+        },
+        {
+          "field": "invoice_date",
+          "error": "required_field_missing",
+          "value_found": null
+        },
+        {
+          "field": "vendor_name",
+          "error": "required_field_missing",
+          "value_found": null
+        },
+        {
+          "field": "total_amount",
+          "error": "required_field_missing",
+          "value_found": null
+        },
+        {
+          "field": "currency",
+          "error": "required_field_missing",
+          "value_found": null
+        }
+      ],
+      "coercions_applied": [],
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "latency_ms": 12
+    },
+    "audit_trail": [
+      {
+        "step_id": "3b691cc5-3d2e-4fb4-aa3f-46dda79b7bc9",
+        "skill_used": "data_extraction",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "latency_ms": 13,
+        "timestamp_utc": "2026-11-06T12:01:20.107483+00:00"
+      }
+    ],
+    "eval_metrics": {
+      "accuracy_score": 0.0,
+      "f1_score": 0.0,
+      "hallucination_rate": 0.0,
+      "p95_latency_ms": 13,
+      "confidence": 0.0,
+      "cost_usd": 0.0,
+      "token_cost_usd": 0.0,
+      "total_latency_ms": 13,
+      "reconciliation_recall": null
+    }
+  },
+  "failure_reason": null,
+  "failure_category": null,
+  "entry_hash": "bee99e1dc35c87f508b99f7ccb739d39999b940584d949648d4319b9fade5d57"
+}
